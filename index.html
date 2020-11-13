@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="apple-touch-icon" href="images/logo-192.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/materialize.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="manifest" href="./manifest.json" />
+    <meta name="theme-color" content="#78909c" />
+  </head>
+  <body>
+    <header>
+      <!-- Navigasi -->
+      <nav class="blue-grey lighten-1" role="navigation">
+        <div class="container">
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo" id="logo-container">PL Soccer</a>
+            <a href="#" class="sidenav-trigger" data-target="nav-mobile">☰</a>
+            <ul class="sidenav" id="nav-mobile"></ul>
+            <ul class="topnav right hide-on-med-and-down"></ul>
+          </div>
+        </div>
+      </nav>
+      <!-- Akhir Navigasi -->
+    </header>
+    <div id="body-content"></div>
+    <footer class="blue-grey lighten-1 center white-text">
+      <p>&copy;Copyright 2020</p>
+    </footer>
+    <!-- Javascript -->
+    <script src="./js/api.js"></script>
+    <script src="./js/idb.js"></script>
+    <script src="./js/db.js"></script>
+    <script src="./js/materialize.min.js"></script>
+    <script src="./js/nav.js"></script>
+    <script src="./js/script.js"></script>
+    <script>
+      //REGISTER SERVICE WORKER
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker
+            .register("./service-worker.js")
+            .then(function () {
+              console.log("Pendaftaran ServiceWorker berhasil");
+            })
+            .catch(function () {
+              console.log("Pendaftaran ServiceWorker gagal");
+            });
+          navigator.serviceWorker.ready.then(() => {
+            requestPermission();
+          });
+        });
+      } else {
+        console.log("ServiceWorker belum didukung browser ini.");
+      }
+    </script>
+    <script src="./js/pushNotif.js"></script>
+  </body>
+</html>
