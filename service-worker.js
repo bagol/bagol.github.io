@@ -27,6 +27,13 @@ workbox.routing.registerRoute(
   })
 );
 
+workbox.routing.registerRoute(
+  "https://api.football-data.org/v2/",
+  workbox.strategies.staleWhileRevalidate({
+    cacheName: "footbal-data",
+  })
+);
+
 self.addEventListener("push", function (event) {
   var body;
   if (event.data) {
