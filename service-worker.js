@@ -26,6 +26,10 @@ if (workbox) {
       { url: "pages/teams.html", revision: "1" },
       { url: "js/pushNotif.js", revision: "1" },
       { url: "service-worker.js", revision: "1" },
+      {
+        url: "https://fonts.googleapis.com/icon?family=Material+Icons",
+        revision: "1",
+      },
     ],
     {
       ignoreUrlParametersMatching: [/.*/],
@@ -43,6 +47,12 @@ if (workbox) {
     new RegExp("https://api.football-data.org/v2/"),
     workbox.strategies.staleWhileRevalidate({
       cacheName: "api-data",
+    })
+  );
+  workbox.routing.registerRoute(
+    /.*(?:googleapis|gstatic)\.com/,
+    workbox.strategies.staleWhileRevalidate({
+      cacheName: "google-fonts-stylesheets",
     })
   );
 } else {

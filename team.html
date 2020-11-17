@@ -40,10 +40,18 @@
     <main>
       <div class="container" id="team"></div>
       <div class="fixed-action-btn">
-        <a class="btn-floating btn-large red" id="save">
+        <a
+          onclick="M.toast({html: 'Simpan team Favorit'})"
+          class="btn-floating btn-large red"
+          id="save"
+        >
           <i class="large material-icons">save</i>
         </a>
-        <a class="btn-floating btn-large red" id="delete">
+        <a
+          onclick="M.toast({html: 'Hapus team Favorit'})"
+          class="btn-floating btn-large red"
+          id="delete"
+        >
           <i class="large material-icons">delete</i>
         </a>
       </div>
@@ -85,6 +93,7 @@
         if (isFromSaved) {
           // Hide fab jika dimuat dari indexed db
           btnSave.style.display = "none";
+          btnSave.disabled = true;
 
           // ambil artikel lalu tampilkan
           getSaveTeamById();
